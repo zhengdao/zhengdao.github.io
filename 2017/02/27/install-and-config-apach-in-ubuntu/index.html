@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Learn to proxy a web site by the proxy or reverse proxy of apache2 in Ubuntu.">
+<meta name="keywords" content="Dev,Apache,Proxy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to proxy a web site by apache2 in Ubuntu">
+<meta property="og:url" content="https://zhengdao.github.io/2017/02/27/install-and-config-apach-in-ubuntu/index.html">
+<meta property="og:site_name" content="Eric&#39;s Blog">
+<meta property="og:description" content="Learn to proxy a web site by the proxy or reverse proxy of apache2 in Ubuntu.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-02-27T06:59:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to proxy a web site by apache2 in Ubuntu">
+<meta name="twitter:description" content="Learn to proxy a web site by the proxy or reverse proxy of apache2 in Ubuntu.">
+
+
+
+
+
+
+  <link rel="canonical" href="https://zhengdao.github.io/2017/02/27/install-and-config-apach-in-ubuntu/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>How to proxy a web site by apache2 in Ubuntu | Eric's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Eric's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Stay Hungry. Stay Foolish.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Search</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://zhengdao.github.io/2017/02/27/install-and-config-apach-in-ubuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Eric">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Eric's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">How to proxy a web site by apache2 in Ubuntu
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-02-27 17:15:53 / Modified: 14:59:03" itemprop="dateCreated datePublished" datetime="2017-02-27T17:15:53+08:00">2017-02-27</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件开发/" itemprop="url" rel="index"><span itemprop="name">软件开发</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件开发/Apache/" itemprop="url" rel="index"><span itemprop="name">Apache</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/27/install-and-config-apach-in-ubuntu/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2017/02/27/install-and-config-apach-in-ubuntu/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">Learn to proxy a web site by the proxy or reverse proxy of apache2 in Ubuntu.</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Install-apache2"><a href="#Install-apache2" class="headerlink" title="Install apache2"></a>Install apache2</h2><p>To execute the install command in terminal:</p>
+<pre><code>sudo apt-get install apache2
+</code></pre><p>Then, we can find that the apache2 has been installed in “/etc/“ directory.</p>
+<pre><code>eric@eric:cd /etc/apache2
+
+eric@eric:/etc/apache2$ apache2 -version
+Server version: Apache/2.4.7 (Ubuntu)
+Server built:   Apr  3 2014 12:20:28
+
+eric@eric:/etc/apache2# ls -l
+total 80
+-rw-r--r-- 1 root root  7115 Jan  7 21:23 apache2.conf
+drwxr-xr-x 2 root root  4096 Jun 17 15:09 conf-available
+drwxr-xr-x 2 root root  4096 Jun 17 15:09 conf-enabled
+-rw-r--r-- 1 root root  1782 Jan  3 22:48 envvars
+-rw-r--r-- 1 root root 31063 Jan  3 22:48 magic
+drwxr-xr-x 2 root root 12288 Jun 17 15:09 mods-available
+drwxr-xr-x 2 root root  4096 Jun 17 15:09 mods-enabled
+-rw-r--r-- 1 root root   320 Jan  7 21:23 ports.conf
+drwxr-xr-x 2 root root  4096 Jun 17 15:08 sites-available
+drwxr-xr-x 2 root root  4096 Jun 17 15:09 sites-enabled
+</code></pre><h4 id="Attention"><a href="#Attention" class="headerlink" title="Attention:"></a>Attention:</h4><p>After executing the install command, some echo exception messages may shown like that.</p>
+<pre><code>AH00558: apache2: Could not reliably determine the server&apos;s fully qualified domain name, using 127.0.1.1. Set the &apos;ServerName&apos; directive globally to suppress this message
+(98)Address already in use: AH00072: make_sock: could not bind to address [::]:80
+(98)Address already in use: AH00072: make_sock: could not bind to address 0.0.0.0:80
+no listening sockets available, shutting down
+</code></pre><p>If so, we need to:</p>
+<p>1) Config the “ServerName” in apache2.conf.</p>
+<pre><code>eric@eric:cd /etc/apache2
+eric@eric:cd vi apache2.conf
+
+...
+ServerName localhost
+...
+</code></pre><p>2) End the existed process which is using the 80 socket.</p>
+<pre><code>netstat -ap | grep 80
+lsof -i:80
+kill {PID}
+</code></pre><p>Or modify the listen socket. (See <a href="#Config listening ports">Config listening ports</a>)</p>
+<p>Then, we can restart apache2.</p>
+<pre><code>eric@eric:sudo /etc/init.d/apache2 restart
+</code></pre><h2 id="configPorts">Config listening ports</h2>
+
+<p>We can change and add the listening ports by modifying port.conf file in “/etc/apache2/“.</p>
+<pre><code>eric@eric:sudo vi /etc/apache2/ports.conf
+</code></pre><p>For example, we change the default port from 80 to 81 to avoid the in used portd.</p>
+<pre><code>Listen 81
+
+&lt;IfModule ssl_module&gt;
+    Listen 443
+&lt;/IfModule&gt;
+
+&lt;IfModule mod_gnutls.c&gt;
+    Listen 443
+&lt;/IfModule&gt;
+</code></pre><p>After changing the default port, the default site configuration (/etc/apache2/sites-enabled/000-default.conf) also need be updated.</p>
+<pre><code>eric@eric:sudo vi /etc/apache2/sites-enabled/000-default.conf
+</code></pre><p>Modify </p>
+<pre><code>&lt;VirtualHost *:80&gt;
+</code></pre><p>as</p>
+<pre><code>&lt;VirtualHost *:81&gt;
+</code></pre><h2 id="Config-proxy-or-reverse-proxy"><a href="#Config-proxy-or-reverse-proxy" class="headerlink" title="Config proxy or reverse proxy"></a>Config proxy or reverse proxy</h2><p>Here, there is a Tomcat worked in 8080 port as our J2EE server and an application named “jreport” running in it. We will config the apache to proxy it.</p>
+<h4 id="1-Activate-proxy-module"><a href="#1-Activate-proxy-module" class="headerlink" title="1. Activate proxy module"></a>1. Activate proxy module</h4><p>There are “mods-available” and “mods-enabled” two directories in apache. The “mods-available” directory includes all available module configuration files. If we want to make them take effect, they must be copied or linked into the “mods-enabled” directory.</p>
+<p>For activating the proxy module, we create some soft link for “proxy.load”, “proxy_http.load” and “proxy.conf”.</p>
+<pre><code>eric@eric:/etc/apache2/mods-enabled$ sudo ln -s ../mods-available/proxy.load
+eric@eric:/etc/apache2/mods-enabled$ sudo ln -s ../mods-available/proxy_http.load
+eric@eric:/etc/apache2/mods-enabled$ sudo ln -s ../mods-available/proxy.conf
+</code></pre><p>Then, execute the a2enmod command.</p>
+<pre><code>eric@eric:/etc/apache2$ a2enmod proxy
+</code></pre><h4 id="2-Config-proxy"><a href="#2-Config-proxy" class="headerlink" title="2. Config proxy"></a>2. Config proxy</h4><p>After activating the proxy module, we can config the “Forward Proxy” or “Reverse Proxy” for the “jreport” application in Tomcat.</p>
+<ul>
+<li>Reverse Proxy</li>
+</ul>
+<p>Reverse proxy is the most used way.</p>
+<pre><code>ProxyRequests Off
+ProxyPass /jreport ${JREPORT_SERVER}/jreport
+ProxyPassReverse /jreport ${JREPORT_SERVER}/jreport
+</code></pre><p>or</p>
+<pre><code>ProxyRequests Off
+
+Timeout 36000
+ProxyTimeout 36000
+
+&lt;Location /jreport/&gt;
+    ProxyPass ${JREPORT_SERVER}/jreport
+    ProxyPassReverse ${JREPORT_SERVER}/jreport
+    ProxyPassReverseCookiePath /jreport /
+&lt;/Location&gt;
+</code></pre><p>For easy to config, we define a variable named “JREPORT_SERVER” in “/etc/apache2/envvars”.</p>
+<pre><code>export JREPORT_SERVER=http://192.168.0.88:8080
+</code></pre><p>After restarting the apache with the latest configuration, we can access the “jreport” application with:</p>
+<pre><code>http://localhost:81/jreport
+</code></pre><ul>
+<li>Forward Proxy</li>
+</ul>
+<p>For example, to control who can access your proxy:</p>
+<pre><code>ProxyRequests On
+ProxyVia On
+&lt;Proxy *&gt;
+  Require ip 192.168.0
+&lt;/Proxy&gt;
+</code></pre><p>For more details, please see the official doc about [mod_proxy] [2].</p>
+<h2 id="Add-SSL-Support"><a href="#Add-SSL-Support" class="headerlink" title="Add SSL Support"></a>Add SSL Support</h2><h4 id="1-Install-openssl-and-ssl-cert"><a href="#1-Install-openssl-and-ssl-cert" class="headerlink" title="1. Install openssl and ssl_cert"></a>1. Install openssl and ssl_cert</h4><pre><code>eric@eric: sudo apt-get install openssl ssl_cert
+</code></pre><h4 id="2-Generate-private-key-and-certification"><a href="#2-Generate-private-key-and-certification" class="headerlink" title="2. Generate private key and certification"></a>2. Generate private key and certification</h4><pre><code>eric@eric: sudo mkdir /etc/apache2/ssl
+eric@eric: cd /etc/apache2/ssl
+eric@eric:/etc/apache2/ssl$ sudo openssl genrsa -des3 -out my-server.key 1024
+eric@eric:/etc/apache2/ssl$ sudo openssl req -key my-server.key -x509 -out my-server.crt -config /etc/ssl/openssl.cnf -days 3650
+</code></pre><h4 id="3-Activate-SSL-module"><a href="#3-Activate-SSL-module" class="headerlink" title="3. Activate SSL module"></a>3. Activate SSL module</h4><pre><code>eric@eric:/etc/apache2/mods-enabled$ sudo ln -s ../mods-available/ssl.load
+eric@eric:/etc/apache2/mods-enabled$ sudo ln -s ../mods-available/ssl.conf
+eric@eric:/etc/apache2/mods-enabled$ sudo a2enmod ssl
+</code></pre><h4 id="4-Add-SSL-support-for-site"><a href="#4-Add-SSL-support-for-site" class="headerlink" title="4. Add SSL support for site"></a>4. Add SSL support for site</h4><p>Now, we modify the default site configuration (/etc/apache2/sites-enabled/000-default.conf) to add SSL support and make non-https access use the https automatically.</p>
+<p>Usually, we config the 443 port for SSL support.</p>
+<pre><code>&lt;VirtualHost *:81&gt;
+    ...
+
+    RewriteEngine on
+    RewriteCond %{HTTPS} !=on
+
+    RewriteRule ^/?(.*)$ https://%{SERVER_NAME}/$1 [L,R]
+&lt;/VirtualHost&gt;
+&lt;VirtualHost *:443&gt;
+    SSLEngine on
+    SSLCertificateFile /etc/apache2/ssl/my-server.crt
+    SSLCertificateKeyFiel /etc/apache2/ssl/my-server.key
+
+    ...
+
+&lt;/VirtualHost&gt;
+</code></pre><h2 id="Postscript"><a href="#Postscript" class="headerlink" title="Postscript"></a>Postscript</h2><p>I have just recorded my first attempt to proxy a web site by apache for memo.<br>There are some other useful and complex modules in apache, such as rewrite, load balance and so on.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li>Apache official doc: [<a href="http://httpd.apache.org/docs/2.4/]" target="_blank" rel="noopener">http://httpd.apache.org/docs/2.4/]</a> [1]</li>
+</ol>
+<p>[1]: <a href="http://httpd.apache.org/docs/2.4/" target="_blank" rel="noopener">http://httpd.apache.org/docs/2.4/</a> apache doc<br>[2]: <a href="http://httpd.apache.org/docs/2.4/mod/mod_proxy.html" target="_blank" rel="noopener">http://httpd.apache.org/docs/2.4/mod/mod_proxy.html</a> mode_proxy</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Eric</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://zhengdao.github.io/2017/02/27/install-and-config-apach-in-ubuntu/" title="How to proxy a web site by apache2 in Ubuntu">https://zhengdao.github.io/2017/02/27/install-and-config-apach-in-ubuntu/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> unless stating additionally.</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Dev/" rel="tag"># Dev</a>
+          
+            <a href="/tags/Apache/" rel="tag"># Apache</a>
+          
+            <a href="/tags/Proxy/" rel="tag"># Proxy</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/27/strang-rexExp-test/" rel="prev" title="坑爹的RegExp test()">
+                坑爹的RegExp test() <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">Show comments from Gitment</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Eric</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zhengdao" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:peanut.sei@outlook.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i></a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-apache2"><span class="nav-number">1.</span> <span class="nav-text">Install apache2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Attention"><span class="nav-number">1.0.1.</span> <span class="nav-text">Attention:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configPorts"><span class="nav-number">2.</span> <span class="nav-text">Config listening ports</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Config-proxy-or-reverse-proxy"><span class="nav-number">3.</span> <span class="nav-text">Config proxy or reverse proxy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Activate-proxy-module"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. Activate proxy module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Config-proxy"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. Config proxy</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-SSL-Support"><span class="nav-number">4.</span> <span class="nav-text">Add SSL Support</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Install-openssl-and-ssl-cert"><span class="nav-number">4.0.1.</span> <span class="nav-text">1. Install openssl and ssl_cert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Generate-private-key-and-certification"><span class="nav-number">4.0.2.</span> <span class="nav-text">2. Generate private key and certification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Activate-SSL-module"><span class="nav-number">4.0.3.</span> <span class="nav-text">3. Activate SSL module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Add-SSL-support-for-site"><span class="nav-number">4.0.4.</span> <span class="nav-text">4. Add SSL support for site</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postscript"><span class="nav-number">5.</span> <span class="nav-text">Postscript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Eric</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Pisces</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'zhengdao',
+            repo: 'zhengdao.github.io',
+            
+            lang: "zh-Hans" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'bb821901673e3b2194905141bd7b747762daec2d',
+            
+                client_id: '3dd9881b3dd2a7e29323'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
