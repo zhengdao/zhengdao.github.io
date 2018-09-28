@@ -90,7 +90,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '6.4.1',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     fastclick: false,
     lazyload: false,
@@ -117,7 +117,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="How to proxy a web site by apache2 in Ubuntu">
 <meta property="og:url" content="https://zhengdao.github.io/2017/02/27/install-and-config-apach-in-ubuntu/index.html">
-<meta property="og:site_name" content="Eric&#39;s Blog">
+<meta property="og:site_name" content="晴耕雨读">
 <meta property="og:description" content="Learn to proxy a web site by the proxy or reverse proxy of apache2 in Ubuntu.">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-02-27T06:59:03.000Z">
@@ -140,7 +140,7 @@
   };
 </script>
 
-  <title>How to proxy a web site by apache2 in Ubuntu | Eric's Blog</title>
+  <title>How to proxy a web site by apache2 in Ubuntu | 晴耕雨读</title>
   
 
 
@@ -198,7 +198,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Eric's Blog</span>
+        <span class="site-title">晴耕雨读</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -355,7 +355,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Eric's Blog">
+      <meta itemprop="name" content="晴耕雨读">
     </span>
 
     
@@ -722,6 +722,10 @@ eric@eric:/etc/apache2/mods-enabled$ sudo a2enmod ssl
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Eric" />
+            
               <p class="site-author-name" itemprop="name">Eric</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -908,6 +912,8 @@ eric@eric:/etc/apache2/mods-enabled$ sudo a2enmod ssl
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     

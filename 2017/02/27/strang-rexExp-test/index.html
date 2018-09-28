@@ -90,7 +90,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '6.4.1',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: true,
     fastclick: false,
     lazyload: false,
@@ -117,7 +117,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="坑爹的RegExp test()">
 <meta property="og:url" content="https://zhengdao.github.io/2017/02/27/strang-rexExp-test/index.html">
-<meta property="og:site_name" content="Eric&#39;s Blog">
+<meta property="og:site_name" content="晴耕雨读">
 <meta property="og:description" content="RegExp的对象有一个很NB的lastIndex属性，当我们调用方法 exec() 或 test()时，RegExp对象会用它来记录最近一次成功匹配后的位置，并将其作为下一次检索的起始点。只有当方法 exec() 或 test() 再也找不到可以匹配的文本时，它们会自动把 lastIndex 属性重置为 0。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://zhengdao.github.io/2017/02/27/strang-rexExp-test/01.png">
@@ -143,7 +143,7 @@
   };
 </script>
 
-  <title>坑爹的RegExp test() | Eric's Blog</title>
+  <title>坑爹的RegExp test() | 晴耕雨读</title>
   
 
 
@@ -201,7 +201,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Eric's Blog</span>
+        <span class="site-title">晴耕雨读</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -358,7 +358,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Eric's Blog">
+      <meta itemprop="name" content="晴耕雨读">
     </span>
 
     
@@ -614,6 +614,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Eric" />
+            
               <p class="site-author-name" itemprop="name">Eric</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -800,6 +804,8 @@
     
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
         
       </div>
     
