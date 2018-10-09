@@ -112,18 +112,18 @@
 
 
 
-  <meta name="description" content="记录Github若干Branch操作的方法、命令及注意事项。">
+  <meta name="description" content="关于Github Branch操作的一些方法、命令及注意事项。">
 <meta name="keywords" content="Dev,ReadingNotes,Version Control,Git,Github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Github 分支操作">
 <meta property="og:url" content="https://zhengdao.github.io/2017/12/01/github-branch-operation/index.html">
 <meta property="og:site_name" content="晴耕雨读">
-<meta property="og:description" content="记录Github若干Branch操作的方法、命令及注意事项。">
+<meta property="og:description" content="关于Github Branch操作的一些方法、命令及注意事项。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-12-01T06:10:32.386Z">
+<meta property="og:updated_time" content="2018-10-09T09:12:39.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Github 分支操作">
-<meta name="twitter:description" content="记录Github若干Branch操作的方法、命令及注意事项。">
+<meta name="twitter:description" content="关于Github Branch操作的一些方法、命令及注意事项。">
 
 
 
@@ -388,12 +388,24 @@
                 
               
 
-              <time title="创建时间：2017-12-01 13:58:34 / 修改时间：14:10:32" itemprop="dateCreated datePublished" datetime="2017-12-01T13:58:34+08:00">2017-12-01</time>
+              <time title="创建时间：2017-12-01 13:58:34" itemprop="dateCreated datePublished" datetime="2017-12-01T13:58:34+08:00">2017-12-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-09 17:12:39" itemprop="dateModified" datetime="2018-10-09T17:12:39+08:00">2018-10-09</time>
               
             
           </span>
@@ -445,7 +457,7 @@
           
 
           
-              <div class="post-description">记录Github若干Branch操作的方法、命令及注意事项。</div>
+              <div class="post-description">关于Github Branch操作的一些方法、命令及注意事项。</div>
           
 
         </div>
@@ -464,53 +476,53 @@
         <h2 id="初始化提交"><a href="#初始化提交" class="headerlink" title="初始化提交"></a>初始化提交</h2><ul>
 <li>建立 git 仓库</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git init</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>将项目的所有文件添加到仓库中</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">add</span><span class="bash"> .</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>将 add 的文件 commit 到仓库</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -am <span class="string">"xxx"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git</span> commit -am <span class="string">"xxx"</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>登录 github，创建自己的 Repository</p>
 </li>
 <li><p>将本地的仓库关联到 github 上</p>
 </li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:zhengdao/repository.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span><span class="bash"> origin git@github.com:zhengdao/repository.git</span></span><br></pre></td></tr></table></figure>
 <p>注： 当使用 SSH 方式时，应当使用 Github 的 git 协议，否则每次 push 都会提示输入<br>Github 的用户名和密码。</p>
 <ul>
 <li>pull 一下</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin <span class="literal">master</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>上传代码到 github 远程仓库</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-<h2 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure>
-<h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch branchname</span><br></pre></td></tr></table></figure>
-<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout branchname</span><br></pre></td></tr></table></figure>
-<h2 id="提交分支"><a href="#提交分支" class="headerlink" title="提交分支"></a>提交分支</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin branchname</span><br></pre></td></tr></table></figure>
-<h2 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge branchname</span><br></pre></td></tr></table></figure>
-<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -D branchname</span><br></pre></td></tr></table></figure>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin :branchname</span><br></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> -u <span class="built_in">origin</span> master</span><br></pre></td></tr></table></figure>
+<h2 id="查看分支"><a href="#查看分支" class="headerlink" title="查看分支"></a>查看分支</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git branch</span></span><br></pre></td></tr></table></figure>
+<h2 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">branch </span><span class="keyword">branchname</span></span><br></pre></td></tr></table></figure>
+<h2 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git checkout branchname</span></span><br></pre></td></tr></table></figure>
+<h2 id="提交分支"><a href="#提交分支" class="headerlink" title="提交分支"></a>提交分支</h2><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> -u <span class="built_in">origin</span> branchname</span><br></pre></td></tr></table></figure>
+<h2 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h2><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">merge</span> branchname</span><br></pre></td></tr></table></figure>
+<h2 id="删除分支"><a href="#删除分支" class="headerlink" title="删除分支"></a>删除分支</h2><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">branch </span>-D <span class="keyword">branchname</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">push</span> <span class="built_in">origin</span> :branchname</span><br></pre></td></tr></table></figure>
 <p>注：删除分支之前，需要对 Github 分支进行设置，将默认分支设成另外的非删除分支。例<br>如：当前有两个分支 master 和 gh-pages，现想删除 master 分支。那么需先将默认分支<br>切换成 gh-pages 然后再用命令进行删除。</p>
 <h2 id="切换远端库地址"><a href="#切换远端库地址" class="headerlink" title="切换远端库地址"></a>切换远端库地址</h2><ul>
 <li>查看当前远端库绑定</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git git remote -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git git remote -v</span></span><br></pre></td></tr></table></figure>
 <p>  显示：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin https://github.com/zhengdao/repository.git (fetch)</span><br><span class="line">origin https://github.com/zhengdao/repository.git (push)</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">origin https:<span class="regexp">//gi</span>thub.com<span class="regexp">/zhengdao/</span>repository.git (fetch)</span><br><span class="line">origin https:<span class="regexp">//gi</span>thub.com<span class="regexp">/zhengdao/</span>repository.git (push)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>删除当前远端库绑定</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">git remote rm origin</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>重新绑定远端库地址</li>
 </ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin git@github.com:zhengdao/repository.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote <span class="keyword">add</span><span class="bash"> origin git@github.com:zhengdao/repository.git</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -660,7 +672,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -689,7 +701,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -730,7 +744,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
