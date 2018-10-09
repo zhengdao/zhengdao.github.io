@@ -115,14 +115,14 @@
   <meta name="description" content="降级、切换、安装以及删除 Ubuntu 系统 Linux 内核启动版本的基本方法。">
 <meta name="keywords" content="Ubuntu,Linux,Linux Kernel,OS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何降级&#x2F;切换Ubuntu系统Linux内核启动版本">
+<meta property="og:title" content="如何降级&#x2F;切换 Ubuntu 系统 Linux 内核启动版本">
 <meta property="og:url" content="https://zhengdao.github.io/2018/10/09/switch-ubuntu-linux-kernel/index.html">
 <meta property="og:site_name" content="晴耕雨读">
 <meta property="og:description" content="降级、切换、安装以及删除 Ubuntu 系统 Linux 内核启动版本的基本方法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-09T09:10:08.361Z">
+<meta property="og:updated_time" content="2018-10-09T09:59:48.906Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何降级&#x2F;切换Ubuntu系统Linux内核启动版本">
+<meta name="twitter:title" content="如何降级&#x2F;切换 Ubuntu 系统 Linux 内核启动版本">
 <meta name="twitter:description" content="降级、切换、安装以及删除 Ubuntu 系统 Linux 内核启动版本的基本方法。">
 
 
@@ -140,7 +140,7 @@
   };
 </script>
 
-  <title>如何降级/切换Ubuntu系统Linux内核启动版本 | 晴耕雨读</title>
+  <title>如何降级/切换 Ubuntu 系统 Linux 内核启动版本 | 晴耕雨读</title>
   
 
 
@@ -363,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">如何降级/切换Ubuntu系统Linux内核启动版本
+          <h1 class="post-title" itemprop="name headline">如何降级/切换 Ubuntu 系统 Linux 内核启动版本
               
             
           </h1>
@@ -388,7 +388,7 @@
                 
               
 
-              <time title="创建时间：2018-10-09 13:37:22 / 修改时间：17:10:08" itemprop="dateCreated datePublished" datetime="2018-10-09T13:37:22+08:00">2018-10-09</time>
+              <time title="创建时间：2018-10-09 13:37:22 / 修改时间：17:59:48" itemprop="dateCreated datePublished" datetime="2018-10-09T13:37:22+08:00">2018-10-09</time>
             
 
             
@@ -461,12 +461,14 @@
       
 
       
-        <h2 id="1-查看系统可用的-Linux-内核"><a href="#1-查看系统可用的-Linux-内核" class="headerlink" title="1.查看系统可用的 Linux 内核"></a>1.查看系统可用的 Linux 内核</h2><p>查看启动菜单 “Advanced options for Ubuntu” 的子选项，以确定可选的 Linux 内核信息：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">grep</span> menuentry <span class="regexp">/boot/g</span>rub<span class="regexp">/grub.cfg</span></span><br></pre></td></tr></table></figure></p>
+        <h1 id="1-查看系统可用的-Linux-内核"><a href="#1-查看系统可用的-Linux-内核" class="headerlink" title="1.查看系统可用的 Linux 内核"></a>1.查看系统可用的 Linux 内核</h1><p>查看启动菜单 “Advanced options for Ubuntu” 的子选项，以确定可选的 Linux 内核信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep menuentry /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
 <p>可以看到子选项：</p>
 <blockquote>
 <p>‘Ubuntu, with Linux 4.4.0-104-generic’</p>
 </blockquote>
-<h2 id="2-修改Grub，设置内核启动版本"><a href="#2-修改Grub，设置内核启动版本" class="headerlink" title="2.修改Grub，设置内核启动版本"></a>2.修改Grub，设置内核启动版本</h2><p>用 Gedit 编辑器打开 grub 文件：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit <span class="regexp">/etc/</span><span class="keyword">default</span><span class="regexp">/grub</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="2-修改Grub，设置内核启动版本"><a href="#2-修改Grub，设置内核启动版本" class="headerlink" title="2.修改Grub，设置内核启动版本"></a>2.修改Grub，设置内核启动版本</h1><p>用 Gedit 编辑器打开 grub 文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /etc/default/grub</span><br></pre></td></tr></table></figure>
 <p>将</p>
 <blockquote>
 <p>GRUB_DEFAULT=0 // 0表示系统当前启动的内核序号</p>
@@ -475,14 +477,18 @@
 <blockquote>
 <p>GRUB_DEFAULT=“Advanced options for Ubuntu &gt; Ubuntu, with Linux 4.4.0-104-generic”</p>
 </blockquote>
-<h2 id="3-更新Grub"><a href="#3-更新Grub" class="headerlink" title="3.更新Grub"></a>3.更新Grub</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo update grub</span></span><br></pre></td></tr></table></figure>
-<p>或使用更标准的做法：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo grub-mkconfig -o <span class="regexp">/boot/g</span>rub<span class="regexp">/grub.cfg</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="3-更新Grub"><a href="#3-更新Grub" class="headerlink" title="3.更新Grub"></a>3.更新Grub</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update grub</span><br></pre></td></tr></table></figure>
+<p>或使用更标准的做法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
 <p>此时如果有错误，则检查 GRUB_DEFAULT 是否所选 Linux 内核版本不在次级选项中，若是则需要将前面部分”Advanced options for Ubuntu&gt;”去掉后重新执行。</p>
 <p>无错误提示，即可reboot重启系统。</p>
-<h2 id="4-查看当前运行内核"><a href="#4-查看当前运行内核" class="headerlink" title="4.查看当前运行内核"></a>4.查看当前运行内核</h2><p>查看系统当前运行内核信息，以确认降级是否成功。<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">uname</span> <span class="selector-tag">-r</span>(或-a)</span><br></pre></td></tr></table></figure></p>
-<h2 id="5-安装Linux内核"><a href="#5-安装Linux内核" class="headerlink" title="5.安装Linux内核"></a>5.安装Linux内核</h2><p>查看可安装的内核：<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">cache</span> <span class="keyword">search</span> linux-image | grep generic</span><br></pre></td></tr></table></figure></p>
-<p>安装新内核：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install linux-image<span class="number">-4.4</span><span class="number">.0</span><span class="number">-108</span>-generic</span><br></pre></td></tr></table></figure></p>
-<h2 id="4-卸载Linux内核"><a href="#4-卸载Linux内核" class="headerlink" title="4.卸载Linux内核"></a>4.卸载Linux内核</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> <span class="builtin-name">remove</span>(或用purge) linux-image-4.4.0-105-generic</span><br></pre></td></tr></table></figure>
+<h1 id="4-查看当前运行内核"><a href="#4-查看当前运行内核" class="headerlink" title="4.查看当前运行内核"></a>4.查看当前运行内核</h1><p>查看系统当前运行内核信息，以确认降级是否成功。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r(或-a)</span><br></pre></td></tr></table></figure>
+<h1 id="5-安装Linux内核"><a href="#5-安装Linux内核" class="headerlink" title="5.安装Linux内核"></a>5.安装Linux内核</h1><p>查看可安装的内核：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-cache search linux-image | grep generic</span><br></pre></td></tr></table></figure>
+<p>安装新内核：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install linux-image-4.4.0-108-generic</span><br></pre></td></tr></table></figure>
+<h1 id="4-卸载Linux内核"><a href="#4-卸载Linux内核" class="headerlink" title="4.卸载Linux内核"></a>4.卸载Linux内核</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove(或用purge) linux-image-4.4.0-105-generic</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -503,7 +509,7 @@
     <strong>本文作者： </strong>Eric</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://zhengdao.github.io/2018/10/09/switch-ubuntu-linux-kernel/" title="如何降级/切换Ubuntu系统Linux内核启动版本">https://zhengdao.github.io/2018/10/09/switch-ubuntu-linux-kernel/</a>
+    <a href="https://zhengdao.github.io/2018/10/09/switch-ubuntu-linux-kernel/" title="如何降级/切换 Ubuntu 系统 Linux 内核启动版本">https://zhengdao.github.io/2018/10/09/switch-ubuntu-linux-kernel/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -753,7 +759,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-查看系统可用的-Linux-内核"><span class="nav-number">1.</span> <span class="nav-text">1.查看系统可用的 Linux 内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-修改Grub，设置内核启动版本"><span class="nav-number">2.</span> <span class="nav-text">2.修改Grub，设置内核启动版本</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-更新Grub"><span class="nav-number">3.</span> <span class="nav-text">3.更新Grub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-查看当前运行内核"><span class="nav-number">4.</span> <span class="nav-text">4.查看当前运行内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-安装Linux内核"><span class="nav-number">5.</span> <span class="nav-text">5.安装Linux内核</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-卸载Linux内核"><span class="nav-number">6.</span> <span class="nav-text">4.卸载Linux内核</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-查看系统可用的-Linux-内核"><span class="nav-number">1.</span> <span class="nav-text">1.查看系统可用的 Linux 内核</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-修改Grub，设置内核启动版本"><span class="nav-number">2.</span> <span class="nav-text">2.修改Grub，设置内核启动版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-更新Grub"><span class="nav-number">3.</span> <span class="nav-text">3.更新Grub</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-查看当前运行内核"><span class="nav-number">4.</span> <span class="nav-text">4.查看当前运行内核</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-安装Linux内核"><span class="nav-number">5.</span> <span class="nav-text">5.安装Linux内核</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-卸载Linux内核"><span class="nav-number">6.</span> <span class="nav-text">4.卸载Linux内核</span></a></li></ol></div>
             
 
           </div>

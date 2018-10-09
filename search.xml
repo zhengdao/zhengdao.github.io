@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[如何降级/切换Ubuntu系统Linux内核启动版本]]></title>
+    <title><![CDATA[如何降级/切换 Ubuntu 系统 Linux 内核启动版本]]></title>
     <url>%2F2018%2F10%2F09%2Fswitch-ubuntu-linux-kernel%2F</url>
-    <content type="text"><![CDATA[1.查看系统可用的 Linux 内核查看启动菜单 “Advanced options for Ubuntu” 的子选项，以确定可选的 Linux 内核信息：1grep menuentry /boot/grub/grub.cfg 可以看到子选项： ‘Ubuntu, with Linux 4.4.0-104-generic’ 2.修改Grub，设置内核启动版本用 Gedit 编辑器打开 grub 文件：1sudo gedit /etc/default/grub 将 GRUB_DEFAULT=0 // 0表示系统当前启动的内核序号 修改为想要启动的内核版本对应子选项： GRUB_DEFAULT=“Advanced options for Ubuntu &gt; Ubuntu, with Linux 4.4.0-104-generic” 3.更新Grub1sudo update grub 或使用更标准的做法：1sudo grub-mkconfig -o /boot/grub/grub.cfg 此时如果有错误，则检查 GRUB_DEFAULT 是否所选 Linux 内核版本不在次级选项中，若是则需要将前面部分”Advanced options for Ubuntu&gt;”去掉后重新执行。 无错误提示，即可reboot重启系统。 4.查看当前运行内核查看系统当前运行内核信息，以确认降级是否成功。1uname -r(或-a) 5.安装Linux内核查看可安装的内核：1sudo apt-cache search linux-image | grep generic 安装新内核：1sudo apt-get install linux-image-4.4.0-108-generic 4.卸载Linux内核1sudo apt-get remove(或用purge) linux-image-4.4.0-105-generic]]></content>
+    <content type="text"><![CDATA[1.查看系统可用的 Linux 内核查看启动菜单 “Advanced options for Ubuntu” 的子选项，以确定可选的 Linux 内核信息： 1grep menuentry /boot/grub/grub.cfg 可以看到子选项： ‘Ubuntu, with Linux 4.4.0-104-generic’ 2.修改Grub，设置内核启动版本用 Gedit 编辑器打开 grub 文件： 1sudo gedit /etc/default/grub 将 GRUB_DEFAULT=0 // 0表示系统当前启动的内核序号 修改为想要启动的内核版本对应子选项： GRUB_DEFAULT=“Advanced options for Ubuntu &gt; Ubuntu, with Linux 4.4.0-104-generic” 3.更新Grub1sudo update grub 或使用更标准的做法： 1sudo grub-mkconfig -o /boot/grub/grub.cfg 此时如果有错误，则检查 GRUB_DEFAULT 是否所选 Linux 内核版本不在次级选项中，若是则需要将前面部分”Advanced options for Ubuntu&gt;”去掉后重新执行。 无错误提示，即可reboot重启系统。 4.查看当前运行内核查看系统当前运行内核信息，以确认降级是否成功。 1uname -r(或-a) 5.安装Linux内核查看可安装的内核： 1sudo apt-cache search linux-image | grep generic 安装新内核： 1sudo apt-get install linux-image-4.4.0-108-generic 4.卸载Linux内核1sudo apt-get remove(或用purge) linux-image-4.4.0-105-generic]]></content>
       <categories>
         <category>Ubuntu</category>
         <category>Linux</category>
