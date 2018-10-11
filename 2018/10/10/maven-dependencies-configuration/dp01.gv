@@ -1,0 +1,10 @@
+digraph G {
+    rankdir=LR;
+        
+    pa [shape=box, label="Project A"];
+    pb [shape=box, label="Project B"];
+    pc [shape=box, label="Project C"];
+
+    pa -> pb -> pc;
+    pa -> pc [style=dotted, constraint=false];
+}

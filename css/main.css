@@ -1310,6 +1310,14 @@ pre .javascript .function {
     text-align: left;
   }
 }
+.posts-expand .post-body h1 {
+  border-left: 18px solid #228b22;
+  padding-left: 4px;
+  border-bottom: 1px solid #228b22;
+}
+.posts-expand .post-body h2 {
+  border-bottom: 1px solid #d3d3d3;
+}
 .posts-expand .post-body h2,
 .posts-expand .post-body h3,
 .posts-expand .post-body h4,
@@ -1866,7 +1874,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #0a03ff;
+  background: #7cff7c;
 }
 .links-of-blogroll {
   font-size: 13px;
