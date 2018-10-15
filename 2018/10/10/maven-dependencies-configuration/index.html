@@ -112,19 +112,19 @@
 
 
 
-  <meta name="description" content="pom.xml 中关于 maven 依赖配置的一些基础知识及用法。">
+  <meta name="description" content="一个项目通常会需要一个或者多个项目依赖。pom.xml 的 dependencies 元素可以包含一到多个 dependency 元素，以声明一或者多个项目依赖。一个 dependency 元素可以包含 groupId、artifactId、version、type、classifier、scope、systemPath、optional、exclusions 等元素。其中  groupId、ar">
 <meta name="keywords" content="Dev,ReadingNotes,Maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maven 依赖配置">
 <meta property="og:url" content="https://zhengdao.github.io/2018/10/10/maven-dependencies-configuration/index.html">
 <meta property="og:site_name" content="晴耕雨读">
-<meta property="og:description" content="pom.xml 中关于 maven 依赖配置的一些基础知识及用法。">
+<meta property="og:description" content="一个项目通常会需要一个或者多个项目依赖。pom.xml 的 dependencies 元素可以包含一到多个 dependency 元素，以声明一或者多个项目依赖。一个 dependency 元素可以包含 groupId、artifactId、version、type、classifier、scope、systemPath、optional、exclusions 等元素。其中  groupId、ar">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://zhengdao.github.io/2018/10/10/maven-dependencies-configuration/dp01.png">
-<meta property="og:updated_time" content="2018-10-11T09:20:07.171Z">
+<meta property="og:updated_time" content="2018-10-15T03:14:53.823Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maven 依赖配置">
-<meta name="twitter:description" content="pom.xml 中关于 maven 依赖配置的一些基础知识及用法。">
+<meta name="twitter:description" content="一个项目通常会需要一个或者多个项目依赖。pom.xml 的 dependencies 元素可以包含一到多个 dependency 元素，以声明一或者多个项目依赖。一个 dependency 元素可以包含 groupId、artifactId、version、type、classifier、scope、systemPath、optional、exclusions 等元素。其中  groupId、ar">
 <meta name="twitter:image" content="https://zhengdao.github.io/2018/10/10/maven-dependencies-configuration/dp01.png">
 
 
@@ -407,7 +407,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-11 17:20:07" itemprop="dateModified" datetime="2018-10-11T17:20:07+08:00">2018-10-11</time>
+                <time title="修改时间：2018-10-15 11:14:53" itemprop="dateModified" datetime="2018-10-15T11:14:53+08:00">2018-10-15</time>
               
             
           </span>
@@ -459,7 +459,7 @@
           
 
           
-              <div class="post-description">pom.xml 中关于 maven 依赖配置的一些基础知识及用法。</div>
+              <div class="post-description">一个项目通常会需要一个或者多个项目依赖。pom.xml 的 dependencies 元素可以包含一到多个 dependency 元素，以声明一或者多个项目依赖。一个 dependency 元素可以包含 groupId、artifactId、version、type、classifier、scope、systemPath、optional、exclusions 等元素。其中  groupId、artifactId、version 对每一个 dependency 元素配置是必须的。</div>
           
 
         </div>
@@ -476,7 +476,7 @@
 
       
         <h1 id="Maven-依赖配置的基本结构"><a href="#Maven-依赖配置的基本结构" class="headerlink" title="Maven 依赖配置的基本结构"></a>Maven 依赖配置的基本结构</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">project</span>&gt;</span></span><br><span class="line">  ......</span><br><span class="line">  <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>...<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>...<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>...<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">type</span>&gt;</span>...<span class="tag">&lt;/<span class="name">type</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">scope</span>&gt;</span>...<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">optional</span>&gt;</span>..<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">          ...</span><br><span class="line">        <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">        ...</span><br><span class="line">      <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line">  ......</span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>通常，一个项目都会有到一个或者多个项目依赖。因此，在 pom.xml 的根元素 project 下的 dependencies 可以包含一到多个 dependency 元素，以声明一或者多个项目依赖。</p>
+<p>通常，一个项目都会用到一个或者多个项目依赖。因此，在 pom.xml 的根元素 project 下的 dependencies 可以包含一到多个 dependency 元素，以声明一或者多个项目依赖。</p>
 <p>一个 dependency 元素可以包含 <strong>groupId、artifactId、version、type、classifier、scope、systemPath、optional、exclusions</strong> 等元素。其中  groupId、artifactId、version 对每一个 dependency 元素配置是必须的。optional 用于标记依赖是否可选。另外，systemPath 仅当 scope 为 system 使用，官网上明确不赞成使用。</p>
 <h1 id="依赖项目坐标：groupId、artifactId-和-version"><a href="#依赖项目坐标：groupId、artifactId-和-version" class="headerlink" title="依赖项目坐标：groupId、artifactId 和 version"></a>依赖项目坐标：groupId、artifactId 和 version</h1><p>groupId、artifactId、version 对每一个 dependency 元素来说是必须的。它们是依赖的Maven坐标，对于任何一个 Maven 项目而言，基本坐标是最重要的，Maven 会根据坐标从资源库中找到需要的依赖。</p>
 <h2 id="version-配置"><a href="#version-配置" class="headerlink" title="version 配置"></a>version 配置</h2><p>version 元素定义了依赖项目的版本需求，用于计算有效的依赖版本号。version 允许使用如下语法格式：</p>
@@ -545,7 +545,8 @@
 <li>test：测试依赖范围，仅对于测试 classmate 有效。典型的例子是 JUnit，只有在编译和运行测试的时候才需要。</li>
 <li>provided：已提供依赖范围。该依赖范围，对于编译和测试 classpath 都有效，但对运行 classpath 无效。典型的例子是 servlet-api，编译和测试 J2EE 项目时都需要该依赖，但在部署运行项目时，由于容器已经提供，故不需要重复引入。</li>
 <li>runtime：运行时依赖范围。该依赖范围，对于测试和运行 classpath 有效，但在编译主代码时无效。典型的例子是 JDBC 驱动实现，项目主代码的编译只需要 JDK 提供的 JDBC 接口，只有在测试和项目运行时才真正需要。</li>
-<li><p>system：系统依赖范围。系统依赖范围和三种 classpath 的关系，和 provided 依赖范围完全一致。但是由于此类依赖不是通过 Maven 仓库解析，而是往往与本机系统绑定，在使用时必须通过 systemPath 元素显示地指定依赖文件的路径。可能造成构建的不可移植，因此应该谨慎使用。</p>
+<li>system：系统依赖范围。系统依赖范围和三种 classpath 的关系，和 provided 依赖范围完全一致。但是由于此类依赖不是通过 Maven 仓库解析，而是往往与本机系统绑定，在使用时必须通过 systemPath 元素显示地指定依赖文件的路径。可能造成构建的不可移植，因此应该谨慎使用。</li>
+<li><p>import：导入依赖范围。该依赖范围为 Maven 2.0.9 之后新增，它只使用在 <dependencymanagement> 中，表示从其它的 pom 中导入 dependency 的配置。</dependencymanagement></p>
 <p>systemPath 元素可以引用环境变量，如：</p>
 </li>
 </ul>
@@ -759,6 +760,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/10/12/maven-repository/" rel="prev" title="Maven 仓库简介">
+                Maven 仓库简介 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -839,7 +844,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
