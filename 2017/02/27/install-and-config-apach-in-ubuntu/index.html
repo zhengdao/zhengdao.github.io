@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="晴耕雨读">
 <meta property="og:description" content="Learn to proxy a web site by the proxy or reverse proxy of apache2 in Ubuntu.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-02-27T06:59:03.000Z">
+<meta property="og:updated_time" content="2018-10-23T03:35:20.627Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to proxy a web site by apache2 in Ubuntu">
 <meta name="twitter:description" content="Learn to proxy a web site by the proxy or reverse proxy of apache2 in Ubuntu.">
@@ -388,12 +388,24 @@
                 
               
 
-              <time title="创建时间：2017-02-27 17:15:53 / 修改时间：14:59:03" itemprop="dateCreated datePublished" datetime="2017-02-27T17:15:53+08:00">2017-02-27</time>
+              <time title="创建时间：2017-02-27 17:15:53" itemprop="dateCreated datePublished" datetime="2017-02-27T17:15:53+08:00">2017-02-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2018-10-23 11:35:20" itemprop="dateModified" datetime="2018-10-23T11:35:20+08:00">2018-10-23</time>
               
             
           </span>
@@ -563,7 +575,7 @@ ProxyVia On
   Require ip 192.168.0
 &lt;/Proxy&gt;
 </code></pre><p>For more details, please see the official doc about [mod_proxy] [2].</p>
-<h2 id="Add-SSL-Support"><a href="#Add-SSL-Support" class="headerlink" title="Add SSL Support"></a>Add SSL Support</h2><h4 id="1-Install-openssl-and-ssl-cert"><a href="#1-Install-openssl-and-ssl-cert" class="headerlink" title="1. Install openssl and ssl_cert"></a>1. Install openssl and ssl_cert</h4><pre><code>eric@eric: sudo apt-get install openssl ssl_cert
+<h2 id="Add-SSL-Support"><a href="#Add-SSL-Support" class="headerlink" title="Add SSL Support"></a>Add SSL Support</h2><h4 id="1-Install-openssl-and-ssl-cert"><a href="#1-Install-openssl-and-ssl-cert" class="headerlink" title="1. Install openssl and ssl-cert"></a>1. Install openssl and ssl-cert</h4><pre><code>eric@eric: sudo apt-get install openssl ssl-cert
 </code></pre><h4 id="2-Generate-private-key-and-certification"><a href="#2-Generate-private-key-and-certification" class="headerlink" title="2. Generate private key and certification"></a>2. Generate private key and certification</h4><pre><code>eric@eric: sudo mkdir /etc/apache2/ssl
 eric@eric: cd /etc/apache2/ssl
 eric@eric:/etc/apache2/ssl$ sudo openssl genrsa -des3 -out my-server.key 1024
@@ -863,7 +875,7 @@ eric@eric:/etc/apache2/mods-enabled$ sudo a2enmod ssl
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-apache2"><span class="nav-number">1.</span> <span class="nav-text">Install apache2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Attention"><span class="nav-number">1.0.1.</span> <span class="nav-text">Attention:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configPorts"><span class="nav-number">2.</span> <span class="nav-text">Config listening ports</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Config-proxy-or-reverse-proxy"><span class="nav-number">3.</span> <span class="nav-text">Config proxy or reverse proxy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Activate-proxy-module"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. Activate proxy module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Config-proxy"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. Config proxy</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-SSL-Support"><span class="nav-number">4.</span> <span class="nav-text">Add SSL Support</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Install-openssl-and-ssl-cert"><span class="nav-number">4.0.1.</span> <span class="nav-text">1. Install openssl and ssl_cert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Generate-private-key-and-certification"><span class="nav-number">4.0.2.</span> <span class="nav-text">2. Generate private key and certification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Activate-SSL-module"><span class="nav-number">4.0.3.</span> <span class="nav-text">3. Activate SSL module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Add-SSL-support-for-site"><span class="nav-number">4.0.4.</span> <span class="nav-text">4. Add SSL support for site</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postscript"><span class="nav-number">5.</span> <span class="nav-text">Postscript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-apache2"><span class="nav-number">1.</span> <span class="nav-text">Install apache2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Attention"><span class="nav-number">1.0.1.</span> <span class="nav-text">Attention:</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#configPorts"><span class="nav-number">2.</span> <span class="nav-text">Config listening ports</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Config-proxy-or-reverse-proxy"><span class="nav-number">3.</span> <span class="nav-text">Config proxy or reverse proxy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Activate-proxy-module"><span class="nav-number">3.0.1.</span> <span class="nav-text">1. Activate proxy module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Config-proxy"><span class="nav-number">3.0.2.</span> <span class="nav-text">2. Config proxy</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Add-SSL-Support"><span class="nav-number">4.</span> <span class="nav-text">Add SSL Support</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Install-openssl-and-ssl-cert"><span class="nav-number">4.0.1.</span> <span class="nav-text">1. Install openssl and ssl-cert</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Generate-private-key-and-certification"><span class="nav-number">4.0.2.</span> <span class="nav-text">2. Generate private key and certification</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-Activate-SSL-module"><span class="nav-number">4.0.3.</span> <span class="nav-text">3. Activate SSL module</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-Add-SSL-support-for-site"><span class="nav-number">4.0.4.</span> <span class="nav-text">4. Add SSL support for site</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Postscript"><span class="nav-number">5.</span> <span class="nav-text">Postscript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">6.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
