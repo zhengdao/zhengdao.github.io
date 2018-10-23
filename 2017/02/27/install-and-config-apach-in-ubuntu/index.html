@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="晴耕雨读">
 <meta property="og:description" content="Learn to proxy a web site by the proxy or reverse proxy of apache2 in Ubuntu.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-23T03:35:20.627Z">
+<meta property="og:updated_time" content="2018-10-23T04:18:16.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to proxy a web site by apache2 in Ubuntu">
 <meta name="twitter:description" content="Learn to proxy a web site by the proxy or reverse proxy of apache2 in Ubuntu.">
@@ -405,7 +405,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-23 11:35:20" itemprop="dateModified" datetime="2018-10-23T11:35:20+08:00">2018-10-23</time>
+                <time title="修改时间：2018-10-23 12:18:16" itemprop="dateModified" datetime="2018-10-23T12:18:16+08:00">2018-10-23</time>
               
             
           </span>
@@ -534,7 +534,7 @@ kill {PID}
 <pre><code>&lt;VirtualHost *:80&gt;
 </code></pre><p>as</p>
 <pre><code>&lt;VirtualHost *:81&gt;
-</code></pre><h2 id="Config-proxy-or-reverse-proxy"><a href="#Config-proxy-or-reverse-proxy" class="headerlink" title="Config proxy or reverse proxy"></a>Config proxy or reverse proxy</h2><p>Here, there is a Tomcat worked in 8080 port as our J2EE server and an application named “jreport” running in it. We will config the apache to proxy it.</p>
+</code></pre><h2 id="Config-proxy-or-reverse-proxy"><a href="#Config-proxy-or-reverse-proxy" class="headerlink" title="Config proxy or reverse proxy"></a>Config proxy or reverse proxy</h2><p>Here, there is a Tomcat worked in 8080 port as our J2EE server and an application named “myreport” running in it. We will config the apache to proxy it.</p>
 <h4 id="1-Activate-proxy-module"><a href="#1-Activate-proxy-module" class="headerlink" title="1. Activate proxy module"></a>1. Activate proxy module</h4><p>There are “mods-available” and “mods-enabled” two directories in apache. The “mods-available” directory includes all available module configuration files. If we want to make them take effect, they must be copied or linked into the “mods-enabled” directory.</p>
 <p>For activating the proxy module, we create some soft link for “proxy.load”, “proxy_http.load” and “proxy.conf”.</p>
 <pre><code>eric@eric:/etc/apache2/mods-enabled$ sudo ln -s ../mods-available/proxy.load
@@ -542,29 +542,29 @@ eric@eric:/etc/apache2/mods-enabled$ sudo ln -s ../mods-available/proxy_http.loa
 eric@eric:/etc/apache2/mods-enabled$ sudo ln -s ../mods-available/proxy.conf
 </code></pre><p>Then, execute the a2enmod command.</p>
 <pre><code>eric@eric:/etc/apache2$ a2enmod proxy
-</code></pre><h4 id="2-Config-proxy"><a href="#2-Config-proxy" class="headerlink" title="2. Config proxy"></a>2. Config proxy</h4><p>After activating the proxy module, we can config the “Forward Proxy” or “Reverse Proxy” for the “jreport” application in Tomcat.</p>
+</code></pre><h4 id="2-Config-proxy"><a href="#2-Config-proxy" class="headerlink" title="2. Config proxy"></a>2. Config proxy</h4><p>After activating the proxy module, we can config the “Forward Proxy” or “Reverse Proxy” for the “myreport” application in Tomcat.</p>
 <ul>
 <li>Reverse Proxy</li>
 </ul>
 <p>Reverse proxy is the most used way.</p>
 <pre><code>ProxyRequests Off
-ProxyPass /jreport ${JREPORT_SERVER}/jreport
-ProxyPassReverse /jreport ${JREPORT_SERVER}/jreport
+ProxyPass /myreport ${REPORT_SERVER}/myreport
+ProxyPassReverse /myreport ${REPORT_SERVER}/myreport
 </code></pre><p>or</p>
 <pre><code>ProxyRequests Off
 
 Timeout 36000
 ProxyTimeout 36000
 
-&lt;Location /jreport/&gt;
-    ProxyPass ${JREPORT_SERVER}/jreport
-    ProxyPassReverse ${JREPORT_SERVER}/jreport
-    ProxyPassReverseCookiePath /jreport /
+&lt;Location /myreport/&gt;
+    ProxyPass ${REPORT_SERVER}/myreport
+    ProxyPassReverse ${REPORT_SERVER}/myreport
+    ProxyPassReverseCookiePath /myreport /
 &lt;/Location&gt;
-</code></pre><p>For easy to config, we define a variable named “JREPORT_SERVER” in “/etc/apache2/envvars”.</p>
-<pre><code>export JREPORT_SERVER=http://192.168.0.88:8080
-</code></pre><p>After restarting the apache with the latest configuration, we can access the “jreport” application with:</p>
-<pre><code>http://localhost:81/jreport
+</code></pre><p>For easy to config, we define a variable named “REPORT_SERVER” in “/etc/apache2/envvars”.</p>
+<pre><code>export REPORT_SERVER=http://192.168.0.88:8080
+</code></pre><p>After restarting the apache with the latest configuration, we can access the “myreport” application with:</p>
+<pre><code>http://localhost:81/myreport
 </code></pre><ul>
 <li>Forward Proxy</li>
 </ul>
