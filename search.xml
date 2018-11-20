@@ -1,6 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python IDLE Usage]]></title>
+    <url>%2F2018%2F11%2F20%2Fpython-idle-usage%2F</url>
+    <content type="text"><![CDATA[开始之前，首先得明确一点，python 不像其他开发语言使用{}来标识代码块，使用分号(；)来标识语句。它总是使用“缩进”来表示，把缩进提升到了一个语法的高度。在书写 python 代码时应非常重视缩进。 IDLE 是 python 的集成开发和学习环境。 IDLE 有两种窗口类型：shell和编辑器。 shell进入 IDEL shell要进入 IDEL shell，只需要在任意命令行终端窗口中输入 “python” 或 “python3” 命令即可。终端将回显 python 版本号之类的提示信息，我们可以在光标处直接输入想要测试的 python 代码。 代码输入执行 单行代码：直接输入，回车执行。 多行代码：回车换行，用 键缩进，两次回车即结束输入交执行代码。 退出 IDEL shell可执行“exit()”或用“Ctrl-D”组合键来退出 IDEL shell。 IDEL 编辑器IDLE 的编辑器也是学习和开发 python 的一个不错选择，初学者可以利用它方便地创建、运行、测试和调试 python 程序。 安装 IDEL 编辑器 Windows 系统：在安装 python 之后，IDEL 一般就自动安装好了，无需再单独安装。 Ubuntu 系统：可在终端执行安装命令进行安装。 1sudo apt install idel3 使用 IDEL 编辑器IDLE 为开发人员提供了许多有用的特性，如自动缩进、语法高亮显示、单词自动完成以及命令历史等等。在这些功能的帮助下，能够有效的提高我们的开发效率。]]></content>
+      <categories>
+        <category>读书笔记</category>
+        <category>Python</category>
+        <category>IDEL</category>
+      </categories>
+      <tags>
+        <tag>ReadingNotes</tag>
+        <tag>Dev</tag>
+        <tag>Python</tag>
+        <tag>IDEL</tag>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Maven 仓库简介]]></title>
     <url>%2F2018%2F10%2F12%2Fmaven-repository%2F</url>
     <content type="text"><![CDATA[何为 Maven 仓库在 Maven 世界中，任何一个依赖、插件或者项目构建的输出，都可称为构件。任何一个构件都有一组坐标来唯一标识。得益于坐标机制，任何 Maven 项目使用任何一个构件的方式都是完全相肉中刺的。据此，Maven 可以在某个地方统一存储管理所有 Maven 项目共享的构件，实际的 Maven 项目将不再各自存储其依赖文件而只需要声明这些依赖的坐标，这个存储的地方就是仓库。Maven 通过仓库来统一管理构件的物理文件。 为了实现重用，项目构建完成后生成的构件也可以安装和部署到仓库，以供其他开发人员和项目使用。 Maven 仓库的分类原格来说，Maven 仓库只有两类：本地仓库和远程仓库。当 Maven 根据坐标寻找构件时，首先会查看本地仓库，找到则直接使用；如果本地仓库不存在此构件，或者需要检查构件是否更新，Maven 就会去远程仓库查找，找到后下载到本地仓库再使用。如果本地仓库和远程仓库都没有需要的构件，则报错。 这里，将远程仓库进一步分为中央仓库、私服和其他公共库，以便说明。 本地仓库一般来说，在 Maven 项目目录下，没有诸如 lib/ 这样目录用来存放依赖文件。当 Maven 在执行编译或测试时，如果需要使用依赖文件，它总是基于坐标使用本地仓库的依赖文件。 本地仓库在本机缓存着从远程仓库下载而来的构件拷贝，以及尚未发布的本地 Maven 项目的临时构建产生的构件输出。一个构件只有在本地仓库中之后，才能由其他 Maven 项目使用。 不管是在 Windows 还是 Linux 上，本地仓库缺省是在用户目录下一个路径名为 .m2/repository/ 的目录。本地仓库的目录位置是可配置的。初始如果不执行任何 Maven 命令，本地仓库目录是不存在的。当用户执行第一条 Maven 命令之后，Maven 才会创建本地仓库。 远程仓库远程仓库可以是一个直正意义的需要通过各种网络协议(如 “file:” 和 “http:”)来进行访问的远程终端库。也可以是公司、团体内部使用的那种架设在局域网或外网的一个文件或 HTTP 服务器上的库，用于在团队和项目间分享私有构件。 中央仓库初始的本地仓库是空的，Maven 必须知道至少一个可用的远程仓库，才能在执行 Maven 命令时下载到需要的构件。中央仓库就是这样一个默认的远程仓库，是一个真正意义的远程仓库。 Maven 的安装文件自带了中央仓库的配置： 123456789101112131415&lt;repositories&gt; &lt;repository&gt; &lt;!-- 中内仓库唯一标识 --&gt; &lt;id&gt;central&lt;/id&gt; &lt;name&gt;Maven Repository Switchboard&lt;/name&gt; &lt;!-- 访问地址 --&gt; &lt;url&gt;http://repo1.maven.org/maven2&lt;/url&gt; &lt;layout&gt;default&lt;/layout&gt; &lt;snapshots&gt; &lt;!-- 表示不从该仓库下载快照版本的构件 --&gt; &lt;enabled&gt;false&lt;/enabled&gt; &lt;/snapshots&gt; &lt;/repository&gt;&lt;/repositories&gt; 私服私服是一种特殊的远程仓库，它是架设在局域网内的仓库服务，私服代理广域网上的远程仓库，供局域网内的 Maven 用户使用。当 Maven 需要下载构件的时候，它从私服请求，如果么服上不存在该构件，则从外部的远程仓库下载，缓存在私服上之后，再为 Maven 的下载请求提供服务。此外，一些无法从外部仓库下载到的构件也能从本地上传到私服上供项目共享。 私服的优点： 节省外网带宽； 加速 Maven 构建； 部署第三方构件； 提高稳定性，增强控件； 降低中央仓库的负荷。 流行的 Maven 私服软件，如 Nexus 等。 Maven 仓库的配置本地仓库配置因为硬盘空间等原因，有时会想要自定义本地仓库目录地址。这时，可以编辑文件 ~/.m2/settings.xml，设置 &lt;localRepository> 元素的值为想要的仓库地址。例如： 123&lt;settings&gt; &lt;localRepository&gt;/home/username/MavenLocalRepository/&lt;/localRepository&gt;&lt;/settings&gt; 注意：settings.xml 一般只放在本机。文件格式及内容可参考或从 $M2_HOME/conf/settings.xml 拷贝修改。 远程仓库配置 配置远程仓库 有时，默认的中央仓库无法满足项目的需要，项目依赖的构件存在于另外的远程仓库中，这就需要对远程仓库进行配置。在 &lt;repositories> 元素下，可以使用 &lt;repository> 子元素声明一到多个远程仓库。 例如，配置 JBoss Maven 仓库： 123456789101112131415161718&lt;project&gt; ... &lt;repositories&gt; &lt;repository&gt; &lt;id&gt;jboss&lt;/id&gt; &lt;name&gt;JBoss Repository&lt;/name&gt; &lt;url&gt;http://repository.jboss.com/maven2/&lt;/url&gt; &lt;layout&gt;default&lt;/layout&gt; &lt;releases&gt; &lt;enabled&gt;true&lt;/enabled&gt; &lt;/releases&gt; &lt;snapshots&gt; &lt;enabled&gt;false&lt;/enabled&gt; &lt;/snapshots&gt; &lt;/repository&gt; &lt;/repositories&gt; ...&lt;/project&gt; 注意： 任何一个仓库的声明的 id 必须是唯一的。Maven 自带的中央仓库使用的 id 为 central，如果其他的仓库声明也使用该 id，就会覆盖中央仓库的配置。 配置中的 URL 值指向了仓库的地址，通常都基于 http 协议，可以在浏览器中打开仓库地址浏览构件。 配置中的 &lt;releases> 和 &lt;snapshots> 元素，用来控制 Maven 对于发布版构件和快照构件的下载。&lt;enabled> 子元素：用于打开/关闭 Maven 对于发布版构件和快照构件的下载。&lt;updatePolicy> 子元素：用来配置 Maven 从远程仓库检查更新的频率，缺省值为 daily，表示每天检查一次。可选值还包括：never（从不检查更新）、always（每次构建都检查更新）、interval：x（每隔x分钟检查一次更新，x为整数）。&lt;checksumPolicy> 子元素：用来配置 Maven 检查检验和文件的策略，缺省值为 warn（输出警告）。可选值还包括：fail（校验错误则让构建失败）、ignore（忽略校验错误）。当部署 Maven 构件时，会同时部署对应的检验和文件。在下载构件时，Maven 会验证检验和文件。 12345&lt;snapshots&gt; &lt;enabled&gt;true&lt;/enabled&gt; &lt;updatePolicy&gt;daily&lt;/updatePolicy&gt; &lt;checksumPolicy&gt;ignore&lt;/checksumPolicy&gt;&lt;/snapshots&gt; 配置仓库认证信息 如果管理员为仓库提供了用户名和密码，为了能让 Maven 访问仓库，需要配置认证信息。Maven 使用 settings.xml 文件中的 &lt;servers> 元素及其 &lt;server> 子元素配置仓库谁信息。&lt;server> 元素的 id 必须与 POM 中需要认证的 repository 元素的 id 完全一致。 1234567891011&lt;settings&gt; ... &lt;servers&gt; &lt;server&gt; &lt;id&gt;myproj&lt;/id&gt; &lt;username&gt;repo-user&lt;/username&gt; &lt;password&gt;repo-pwd&lt;/password&gt; &lt;/server&gt; &lt;/servers&gt; ...&lt;/settings&gt; 部署配置私服的一大作用是部署第三方构件，包括组织内部生成的构件以及一些无法从外部仓库直接获取的构件。Maven 可以通过配置 &lt;distributionManagement> 元素来将项目生成的构建部署到仓库中。 配置部署项目构件到远程库： 123456789101112131415161718192021&lt;proejct&gt; ... &lt;distributionManagement&gt; &lt;repository&gt; &lt;uniqueVersion&gt;false&lt;/uniqueVersion&gt; &lt;id&gt;corp1&lt;/id&gt; &lt;name&gt;Corporate Repository&lt;/name&gt; &lt;url&gt;scp://repo/maven2&lt;/url&gt; &lt;layout&gt;default&lt;/layout&gt; &lt;/repository&gt; &lt;snapshotRepository&gt; &lt;uniqueVersion&gt;true&lt;/uniqueVersion&gt; &lt;id&gt;propSnap&lt;/id&gt; &lt;name&gt;Propellors Snapshots&lt;/name&gt; &lt;url&gt;sftp://propellers.net/maven&lt;/url&gt; &lt;layout&gt;legacy&lt;/layout&gt; &lt;/snapshotRepository&gt; ... &lt;/distributionManagement&gt; ...&lt;/project&gt; 部署 Maven 项目的网站和文档： 123456789101112&lt;proejct&gt; ... &lt;distributionManagement&gt; &lt;site&gt; &lt;id&gt;com.company.proj&lt;/id&gt; &lt;name&gt;Company Project Website&lt;/name&gt; &lt;url&gt;scp://www.company.com/home/projects/proj/public_html/&lt;/url&gt; &lt;/site&gt; ... &lt;/distributionManagement&gt; ...&lt;/project&gt; 配置将当前 Maven 项目以新的构件的形式发布到另一个库： 1234567891011121314&lt;proejct&gt; ... &lt;distributionManagement&gt; ... &lt;relocation&gt; &lt;groupId&gt;org.apache&lt;/groupId&gt; &lt;artifactId&gt;my-project&lt;/artifactId&gt; &lt;version&gt;1.0&lt;/version&gt; &lt;message&gt;We have moved the Project under Apache&lt;/message&gt; &lt;/relocation&gt; ... &lt;/distributionManagement&gt; ...&lt;/project&gt; 镜像如果仓库 X 可以提供仓库 Y 存储的所有内容，那么就可以认为 X 是 Y 的一个镜像。考虑到地理位置的因素，可以考虑为远程仓库配置一个本地镜像，以提供更快的服务。 如编辑 settings.xml 来配置 Maven 镜像以替代中央仓库。 12345678910111213&lt;settings&gt; ... &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;internal-repository&lt;/id&gt; &lt;name&gt;Internal Repository Mirror&lt;/name&gt; &lt;url&gt;http://192.168.1.100/maven2/&lt;/url&gt; &lt;mirrorOf&gt;central&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; ...&lt;/settings&gt; mirror 中 id、name、url 子元素与一般仓库配置无异，表示该镜像仓库的唯一标识符、名称以及地址。&lt;mirrorOf> 的值为 central，表示该配置为中央仓库的镜像，任何对于中央仓库的请求都会转到该镜像。 &lt;mirrorOf> 配置规则： &lt;mirrorOf>*&lt;/mirrorOf>：匹配所有远程仓库。 &lt;mirrorOf>external:*&lt;/mirrorOf>：匹配所有远程仓库，使用 localhost 的除外。 &lt;mirrorOf>repo1,repo2&lt;/mirrorOf>：匹配仓库 repo1 和 repo2，使用逗号分隔多个远程仓库。 &lt;mirrorOf>*,!repo1&lt;/mirrorOf>：匹配所有非repo1远程仓库。 参考资源 Maven 学习笔记合集 Maven 实战 Introduction to Repositories]]></content>
@@ -9,8 +26,8 @@
         <category>Maven</category>
       </categories>
       <tags>
-        <tag>Dev</tag>
         <tag>ReadingNotes</tag>
+        <tag>Dev</tag>
         <tag>Maven</tag>
       </tags>
   </entry>
@@ -23,8 +40,8 @@
         <category>Maven</category>
       </categories>
       <tags>
-        <tag>Dev</tag>
         <tag>ReadingNotes</tag>
+        <tag>Dev</tag>
         <tag>Maven</tag>
       </tags>
   </entry>
@@ -66,8 +83,8 @@
         <category>Eclipse</category>
       </categories>
       <tags>
-        <tag>Dev</tag>
         <tag>ReadingNotes</tag>
+        <tag>Dev</tag>
         <tag>Maven</tag>
         <tag>Eclipse</tag>
       </tags>
@@ -81,8 +98,8 @@
         <category>Maven</category>
       </categories>
       <tags>
-        <tag>Dev</tag>
         <tag>ReadingNotes</tag>
+        <tag>Dev</tag>
         <tag>Maven</tag>
       </tags>
   </entry>
@@ -95,8 +112,8 @@
         <category>Github</category>
       </categories>
       <tags>
-        <tag>Dev</tag>
         <tag>ReadingNotes</tag>
+        <tag>Dev</tag>
         <tag>Version Control</tag>
         <tag>Git</tag>
         <tag>Github</tag>
