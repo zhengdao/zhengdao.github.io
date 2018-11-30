@@ -120,7 +120,7 @@
 <meta property="og:site_name" content="晴耕雨读">
 <meta property="og:description" content="Learn to proxy a web site by the proxy or reverse proxy of apache2 in Ubuntu.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-23T04:18:16.566Z">
+<meta property="og:updated_time" content="2018-11-30T05:57:25.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="How to proxy a web site by apache2 in Ubuntu">
 <meta name="twitter:description" content="Learn to proxy a web site by the proxy or reverse proxy of apache2 in Ubuntu.">
@@ -405,7 +405,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-23 12:18:16" itemprop="dateModified" datetime="2018-10-23T12:18:16+08:00">2018-10-23</time>
+                <time title="修改时间：2018-11-30 13:57:25" itemprop="dateModified" datetime="2018-11-30T13:57:25+08:00">2018-11-30</time>
               
             
           </span>
@@ -422,14 +422,14 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件开发/" itemprop="url" rel="index"><span itemprop="name">软件开发</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开发/" itemprop="url" rel="index"><span itemprop="name">开发</span></a></span>
 
                 
                 
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/软件开发/apache/" itemprop="url" rel="index"><span itemprop="name">Apache</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开发/apache/" itemprop="url" rel="index"><span itemprop="name">Apache</span></a></span>
 
                 
                 
@@ -530,7 +530,7 @@ kill {PID}
 &lt;/IfModule&gt;
 </code></pre><p>After changing the default port, the default site configuration (/etc/apache2/sites-enabled/000-default.conf) also need be updated.</p>
 <pre><code>eric@eric:sudo vi /etc/apache2/sites-enabled/000-default.conf
-</code></pre><p>Modify </p>
+</code></pre><p>Modify</p>
 <pre><code>&lt;VirtualHost *:80&gt;
 </code></pre><p>as</p>
 <pre><code>&lt;VirtualHost *:81&gt;
@@ -575,8 +575,8 @@ ProxyVia On
   Require ip 192.168.0
 &lt;/Proxy&gt;
 </code></pre><p>For more details, please see the official doc about [mod_proxy] [2].</p>
-<h2 id="Add-SSL-Support"><a href="#Add-SSL-Support" class="headerlink" title="Add SSL Support"></a>Add SSL Support</h2><h4 id="1-Install-openssl-and-ssl-cert"><a href="#1-Install-openssl-and-ssl-cert" class="headerlink" title="1. Install openssl and ssl-cert"></a>1. Install openssl and ssl-cert</h4><pre><code>eric@eric: sudo apt-get install openssl ssl-cert
-</code></pre><h4 id="2-Generate-private-key-and-certification"><a href="#2-Generate-private-key-and-certification" class="headerlink" title="2. Generate private key and certification"></a>2. Generate private key and certification</h4><pre><code>eric@eric: sudo mkdir /etc/apache2/ssl
+<h2 id="Add-SSL-Support"><a href="#Add-SSL-Support" class="headerlink" title="Add SSL Support"></a>Add SSL Support</h2><h4 id="1-Install-openssl-and-ssl-cert"><a href="#1-Install-openssl-and-ssl-cert" class="headerlink" title="1. Install openssl and ssl-cert"></a>1. Install openssl and ssl-cert</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eric@eric: sudo apt-get install openssl ssl-cert</span><br></pre></td></tr></table></figure>
+<h4 id="2-Generate-private-key-and-certification"><a href="#2-Generate-private-key-and-certification" class="headerlink" title="2. Generate private key and certification"></a>2. Generate private key and certification</h4><pre><code>eric@eric: sudo mkdir /etc/apache2/ssl
 eric@eric: cd /etc/apache2/ssl
 eric@eric:/etc/apache2/ssl$ sudo openssl genrsa -des3 -out my-server.key 1024
 eric@eric:/etc/apache2/ssl$ sudo openssl req -key my-server.key -x509 -out my-server.crt -config /etc/ssl/openssl.cnf -days 3650
@@ -747,7 +747,7 @@ eric@eric:/etc/apache2/mods-enabled$ sudo a2enmod ssl
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -782,7 +782,15 @@ eric@eric:/etc/apache2/mods-enabled$ sudo a2enmod ssl
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -835,7 +843,11 @@ eric@eric:/etc/apache2/mods-enabled$ sudo a2enmod ssl
                     
                       
                     
-                    <span class="site-state-item-count">20</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
