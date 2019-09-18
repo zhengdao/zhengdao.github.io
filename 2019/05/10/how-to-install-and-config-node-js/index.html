@@ -115,16 +115,16 @@
   <meta name="description" content="Node.js 安装、配置的基本方法和过程。">
 <meta name="keywords" content="Dev,Notes,Node,NPM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Node.js 安装及配置">
+<meta property="og:title" content="Node.js 安装、配置及包管理">
 <meta property="og:url" content="https://zhengdao.github.io/2019/05/10/how-to-install-and-config-node-js/index.html">
 <meta property="og:site_name" content="晴耕雨读">
 <meta property="og:description" content="Node.js 安装、配置的基本方法和过程。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://zhengdao.github.io/2019/05/10/how-to-install-and-config-node-js/node-download.png">
 <meta property="og:image" content="https://zhengdao.github.io/2019/05/10/how-to-install-and-config-node-js/win10.png">
-<meta property="og:updated_time" content="2019-05-10T09:14:31.985Z">
+<meta property="og:updated_time" content="2019-09-18T02:55:26.682Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Node.js 安装及配置">
+<meta name="twitter:title" content="Node.js 安装、配置及包管理">
 <meta name="twitter:description" content="Node.js 安装、配置的基本方法和过程。">
 <meta name="twitter:image" content="https://zhengdao.github.io/2019/05/10/how-to-install-and-config-node-js/node-download.png">
 
@@ -143,7 +143,7 @@
   };
 </script>
 
-  <title>Node.js 安装及配置 | 晴耕雨读</title>
+  <title>Node.js 安装、配置及包管理 | 晴耕雨读</title>
   
 
 
@@ -366,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Node.js 安装及配置
+          <h1 class="post-title" itemprop="name headline">Node.js 安装、配置及包管理
               
             
           </h1>
@@ -391,12 +391,24 @@
                 
               
 
-              <time title="创建时间：2019-05-10 10:29:44 / 修改时间：17:14:31" itemprop="dateCreated datePublished" datetime="2019-05-10T10:29:44+08:00">2019-05-10</time>
+              <time title="创建时间：2019-05-10 10:29:44" itemprop="dateCreated datePublished" datetime="2019-05-10T10:29:44+08:00">2019-05-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-09-18 10:55:26" itemprop="dateModified" datetime="2019-09-18T10:55:26+08:00">2019-09-18</time>
               
             
           </span>
@@ -469,7 +481,7 @@
 </blockquote>
 <img src="/2019/05/10/how-to-install-and-config-node-js/node-download.png">
 <p><strong>LTS (Long Term Support)：</strong>长期支持版    <strong>Current：</strong>最新版本</p>
-<h1 id="Linux-安装-Node-js-以-Ubuntu-为例"><a href="#Linux-安装-Node-js-以-Ubuntu-为例" class="headerlink" title="Linux 安装 Node.js (以 Ubuntu 为例)"></a>Linux 安装 Node.js (以 Ubuntu 为例)</h1><h2 id="三种安装方式"><a href="#三种安装方式" class="headerlink" title="三种安装方式"></a>三种安装方式</h2><ol>
+<h1 id="Linux-安装-node-js-以-Ubuntu-为例"><a href="#Linux-安装-node-js-以-Ubuntu-为例" class="headerlink" title="Linux 安装 node.js (以 Ubuntu 为例)"></a>Linux 安装 node.js (以 Ubuntu 为例)</h1><h2 id="三种安装方式"><a href="#三种安装方式" class="headerlink" title="三种安装方式"></a>三种安装方式</h2><ol>
 <li>二进制编译包安装（强烈推荐）</li>
 </ol>
 <blockquote>
@@ -495,13 +507,13 @@
 <blockquote>
 <p>真心不推荐，虽然安装简单，但后期会遇到各种问题，尤其是目录权限问题。</p>
 </blockquote>
-<h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><p>这里我们直接下载官方编译好的二进制包进行解压安装。</p>
+<h2 id="安装-node-js"><a href="#安装-node-js" class="headerlink" title="安装 node.js"></a>安装 node.js</h2><p>这里我们直接下载官方编译好的二进制包进行解压安装。</p>
 <h3 id="下载二进制压缩包"><a href="#下载二进制压缩包" class="headerlink" title="下载二进制压缩包"></a>下载二进制压缩包</h3><p>从官方网站下载 Linux Binaries (x64) 64-bit 压缩包。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
 <h3 id="解压安装"><a href="#解压安装" class="headerlink" title="解压安装"></a>解压安装</h3><p>直接解压缩包到目标安装目录：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf node-v10.15.3-linux-x64.tar.xz</span><br><span class="line">mv node-v10.15.3-linux-x64 /home/pmf/NodeJS</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf node-v10.15.3-linux-x64.tar.xz</span><br><span class="line">mv node-v10.15.3-linux-x64 /home/pmf/nodeJS</span><br></pre></td></tr></table></figure>
 <p>若想全局安装，可考虑将包直接解压或者解压后拷贝到 /usr/local 或 /opt/ 目录下。</p>
-<h2 id="配置-Node-js"><a href="#配置-Node-js" class="headerlink" title="配置 Node.js"></a>配置 Node.js</h2><h3 id="配置-node、npm-命令，使-Sheel、bash-可以使用"><a href="#配置-node、npm-命令，使-Sheel、bash-可以使用" class="headerlink" title="配置 node、npm 命令，使 Sheel、bash 可以使用"></a>配置 node、npm 命令，使 Sheel、bash 可以使用</h3><ul>
+<h2 id="配置-node-js"><a href="#配置-node-js" class="headerlink" title="配置 node.js"></a>配置 node.js</h2><h3 id="配置-node、npm-命令，使-Sheel、bash-可以使用"><a href="#配置-node、npm-命令，使-Sheel、bash-可以使用" class="headerlink" title="配置 node、npm 命令，使 Sheel、bash 可以使用"></a>配置 node、npm 命令，使 Sheel、bash 可以使用</h3><ul>
 <li>通过设置 PATH 环境变量</li>
 </ul>
 <p>修改 .bashrc (~/.bashrc，全局用 /etc/bash.bashrc) 或 .profile (~/.profile，全局用 /etc/profile) 将 $NODE_HOME/bin 添加到环境变量 PATH 中。</p>
@@ -511,26 +523,26 @@
 <ul>
 <li>通过软连接方式</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /home/pmf/NodeJS/bin/node /usr/local/bin/node</span><br><span class="line">sudo ln -s /home/pmf/NodeJS/bin/npm /usr/local/bin/npm</span><br><span class="line">sudo ln -s /home/pmf/NodeJS/bin/npx /usr/local/bin/npx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /home/pmf/nodeJS/bin/node /usr/local/bin/node</span><br><span class="line">sudo ln -s /home/pmf/nodeJS/bin/npm /usr/local/bin/npm</span><br><span class="line">sudo ln -s /home/pmf/nodeJS/bin/npx /usr/local/bin/npx</span><br></pre></td></tr></table></figure>
 <p>为了不污染全局 bin，这里我们在当前用户 home 目录下创建了一个私用 bin 目录，并将其添加到 PATH 环境变量中:</p>
 <blockquote>
 <p>#set PATH so it includes user’s private bin directories<br>export PATH=$HOME/bin:$HOME/.local/bin:$PATH</p>
 </blockquote>
 <p>然后，将产生的软连接放置在私有 bin 中：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s /home/pmf/NodeJS/bin/node /home/pmf/bin/node</span><br><span class="line">ln -s /home/pmf/NodeJS/bin/npm /home/pmf/bin/npm</span><br><span class="line">ln -s /home/pmf/NodeJS/bin/npx /home/pmf/bin/npx</span><br></pre></td></tr></table></figure>
-<h3 id="配置-Node-js-全局包安装和缓存目录"><a href="#配置-Node-js-全局包安装和缓存目录" class="headerlink" title="配置 Node.js 全局包安装和缓存目录"></a>配置 Node.js 全局包安装和缓存目录</h3><blockquote>
-<p>默认情况下，Node.js 的全局包安装目录为 Node.js 安装路径下的 node_global 目录，缓存路径为 node_cache 目录。如果不想更改此两目录，似乎不需要进行重新配置。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ln -s /home/pmf/nodeJS/bin/node /home/pmf/bin/node</span><br><span class="line">ln -s /home/pmf/nodeJS/bin/npm /home/pmf/bin/npm</span><br><span class="line">ln -s /home/pmf/nodeJS/bin/npx /home/pmf/bin/npx</span><br></pre></td></tr></table></figure>
+<h3 id="配置-node-js-全局包安装和缓存目录"><a href="#配置-node-js-全局包安装和缓存目录" class="headerlink" title="配置 node.js 全局包安装和缓存目录"></a>配置 node.js 全局包安装和缓存目录</h3><blockquote>
+<p>默认情况下，node.js 的全局包安装目录为 node.js 安装路径下的 node_global 目录，缓存路径为 node_cache 目录。如果不想更改此两目录，似乎不需要进行重新配置。</p>
 </blockquote>
 <ul>
 <li>修改 .npmrc (~/.npmrc)</li>
 </ul>
 <blockquote>
-<p>prefix=/home/pmf/NodeJS/node_global<br>cache=/home/pmf/NodeJS/node_cache</p>
+<p>prefix=/home/pmf/nodeJS/node_global<br>cache=/home/pmf/nodeJS/node_cache</p>
 </blockquote>
 <ul>
 <li>命令方式</li>
 </ul>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set prefix /home/pmf/NodeJS/node_global</span><br><span class="line">npm config set cache /home/pmf/NodeJS/node_cache</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set prefix /home/pmf/nodeJS/node_global</span><br><span class="line">npm config set cache /home/pmf/nodeJS/node_cache</span><br></pre></td></tr></table></figure>
 <h3 id="刷新-profile"><a href="#刷新-profile" class="headerlink" title="刷新 profile"></a>刷新 profile</h3><p>完成配置后，如要修改了 .bashrc、.profile 或者 /etc/bash.bashrc、/etc/profile，需要执行 source 或 . 命令以使配置生效。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 <p>或者</p>
@@ -553,13 +565,47 @@
 </blockquote>
 <p>其它 .cnpmrc 和 .npmrc 一样。</p>
 <p>修改后，记得刷新 profile 以使配置生效。</p>
+<h2 id="更新-npm"><a href="#更新-npm" class="headerlink" title="更新 npm"></a>更新 npm</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm</span><br></pre></td></tr></table></figure>
+<h2 id="npm-换源"><a href="#npm-换源" class="headerlink" title="npm 换源"></a>npm 换源</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry http://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+<p>验证</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry</span><br><span class="line"></span><br><span class="line">or,</span><br><span class="line"></span><br><span class="line">npm info express</span><br></pre></td></tr></table></figure>
 <h2 id="其它问题"><a href="#其它问题" class="headerlink" title="其它问题"></a>其它问题</h2><ul>
 <li>使用 npm 安装的包，使用包的相关命令时可能会提示找不到命令，可在用户目录下终端执行下面命令(固定写法)：</li>
 </ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo -e "export PATH=$(npm prefix -g)/bin:$PATH" &gt;&gt; ~/.bashrc &amp;&amp; source ~/.bashrc</span><br></pre></td></tr></table></figure>
-<h1 id="Windows-安装-Node-js"><a href="#Windows-安装-Node-js" class="headerlink" title="Windows 安装 Node.js"></a>Windows 安装 Node.js</h1><p>Windows 下安装 Node.js 更为简单，配置大同小异，主要是配置方式上的差异。</p>
+<h1 id="升级-node-版本"><a href="#升级-node-版本" class="headerlink" title="升级 node 版本"></a>升级 node 版本</h1><ol>
+<li>产看node版本，没安装的请先安装；</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>清楚node缓存；</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm cache clean -f</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>安装node版本管理工具’n’;</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install n -g</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>使用版本管理工具安装指定node或者升级到最新node版本；</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo n stable //安装node最新版本</span><br></pre></td></tr></table></figure>
+<p>或安装指定版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo n //可以安装node指定版本 sudo n 10.10.0</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>使用 node -v 查看node版本，如果版本号改变则升级成功。</li>
+</ol>
+<h1 id="Windows-安装-node-js"><a href="#Windows-安装-node-js" class="headerlink" title="Windows 安装 node.js"></a>Windows 安装 node.js</h1><p>Windows 下安装 node.js 更为简单，配置大同小异，主要是配置方式上的差异。</p>
 <p>Windows 下环境变量的配置，通过 “我的电脑”-“属性”-“高级系统设置”-“高级”-“环境变量” 打开 “环境变量” 对话框进行配置。</p>
 <img src="/2019/05/10/how-to-install-and-config-node-js/win10.png">
+<h1 id="包的安装、卸载和更新"><a href="#包的安装、卸载和更新" class="headerlink" title="包的安装、卸载和更新"></a>包的安装、卸载和更新</h1><h2 id="安装全局包"><a href="#安装全局包" class="headerlink" title="安装全局包"></a>安装全局包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install &#123;pkg-name&#125; -g // npm install vue-cli -g</span><br></pre></td></tr></table></figure>
+<h2 id="卸载全局包"><a href="#卸载全局包" class="headerlink" title="卸载全局包"></a>卸载全局包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall &#123;pkg-name&#125; -g // npm uninstall vue-cli -g</span><br></pre></td></tr></table></figure>
+<h2 id="更新全局包"><a href="#更新全局包" class="headerlink" title="更新全局包"></a>更新全局包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update -g &#123;pkg-name&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="安装项目依赖包"><a href="#安装项目依赖包" class="headerlink" title="安装项目依赖包"></a>安装项目依赖包</h2><p>安装项目运行（运行时、发布到生产环境时）依赖包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install &#123;pkg-name&#125; --save // npm install antd --save</span><br><span class="line"></span><br><span class="line">or, simplely,</span><br><span class="line"></span><br><span class="line">npm i &#123;pkg-name&#125; -S</span><br></pre></td></tr></table></figure>
+<p>安装工程构建（开发时、打包时）依赖包：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install &#123;pkg-name&#125; --save-dev // npm install webpack --save-dev</span><br><span class="line"></span><br><span class="line">or, simplely,</span><br><span class="line"></span><br><span class="line">npm i &#123;pkg-name&#125; -D</span><br></pre></td></tr></table></figure>
+<h2 id="清理项目依赖包"><a href="#清理项目依赖包" class="headerlink" title="清理项目依赖包"></a>清理项目依赖包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm clean-install</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -580,7 +626,7 @@
     <strong>本文作者： </strong>Eric</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://zhengdao.github.io/2019/05/10/how-to-install-and-config-node-js/" title="Node.js 安装及配置">https://zhengdao.github.io/2019/05/10/how-to-install-and-config-node-js/</a>
+    <a href="https://zhengdao.github.io/2019/05/10/how-to-install-and-config-node-js/" title="Node.js 安装、配置及包管理">https://zhengdao.github.io/2019/05/10/how-to-install-and-config-node-js/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -739,8 +785,6 @@
                     
                       
                     
-                      
-                    
                     <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
@@ -753,8 +797,6 @@
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -854,7 +896,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装包、源码包下载"><span class="nav-number">1.</span> <span class="nav-text">安装包、源码包下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-安装-Node-js-以-Ubuntu-为例"><span class="nav-number">2.</span> <span class="nav-text">Linux 安装 Node.js (以 Ubuntu 为例)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三种安装方式"><span class="nav-number">2.1.</span> <span class="nav-text">三种安装方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Node-js"><span class="nav-number">2.2.</span> <span class="nav-text">安装 Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载二进制压缩包"><span class="nav-number">2.2.1.</span> <span class="nav-text">下载二进制压缩包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压安装"><span class="nav-number">2.2.2.</span> <span class="nav-text">解压安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-Node-js"><span class="nav-number">2.3.</span> <span class="nav-text">配置 Node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-node、npm-命令，使-Sheel、bash-可以使用"><span class="nav-number">2.3.1.</span> <span class="nav-text">配置 node、npm 命令，使 Sheel、bash 可以使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-Node-js-全局包安装和缓存目录"><span class="nav-number">2.3.2.</span> <span class="nav-text">配置 Node.js 全局包安装和缓存目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刷新-profile"><span class="nav-number">2.3.3.</span> <span class="nav-text">刷新 profile</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-cnpm"><span class="nav-number">2.4.</span> <span class="nav-text">安装 cnpm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它问题"><span class="nav-number">2.5.</span> <span class="nav-text">其它问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows-安装-Node-js"><span class="nav-number">3.</span> <span class="nav-text">Windows 安装 Node.js</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装包、源码包下载"><span class="nav-number">1.</span> <span class="nav-text">安装包、源码包下载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux-安装-node-js-以-Ubuntu-为例"><span class="nav-number">2.</span> <span class="nav-text">Linux 安装 node.js (以 Ubuntu 为例)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三种安装方式"><span class="nav-number">2.1.</span> <span class="nav-text">三种安装方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-node-js"><span class="nav-number">2.2.</span> <span class="nav-text">安装 node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载二进制压缩包"><span class="nav-number">2.2.1.</span> <span class="nav-text">下载二进制压缩包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解压安装"><span class="nav-number">2.2.2.</span> <span class="nav-text">解压安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-node-js"><span class="nav-number">2.3.</span> <span class="nav-text">配置 node.js</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-node、npm-命令，使-Sheel、bash-可以使用"><span class="nav-number">2.3.1.</span> <span class="nav-text">配置 node、npm 命令，使 Sheel、bash 可以使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-node-js-全局包安装和缓存目录"><span class="nav-number">2.3.2.</span> <span class="nav-text">配置 node.js 全局包安装和缓存目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#刷新-profile"><span class="nav-number">2.3.3.</span> <span class="nav-text">刷新 profile</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-cnpm"><span class="nav-number">2.4.</span> <span class="nav-text">安装 cnpm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新-npm"><span class="nav-number">2.5.</span> <span class="nav-text">更新 npm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#npm-换源"><span class="nav-number">2.6.</span> <span class="nav-text">npm 换源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其它问题"><span class="nav-number">2.7.</span> <span class="nav-text">其它问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#升级-node-版本"><span class="nav-number">3.</span> <span class="nav-text">升级 node 版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows-安装-node-js"><span class="nav-number">4.</span> <span class="nav-text">Windows 安装 node.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#包的安装、卸载和更新"><span class="nav-number">5.</span> <span class="nav-text">包的安装、卸载和更新</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装全局包"><span class="nav-number">5.1.</span> <span class="nav-text">安装全局包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#卸载全局包"><span class="nav-number">5.2.</span> <span class="nav-text">卸载全局包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新全局包"><span class="nav-number">5.3.</span> <span class="nav-text">更新全局包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装项目依赖包"><span class="nav-number">5.4.</span> <span class="nav-text">安装项目依赖包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#清理项目依赖包"><span class="nav-number">5.5.</span> <span class="nav-text">清理项目依赖包</span></a></li></ol></li></ol></div>
             
 
           </div>
