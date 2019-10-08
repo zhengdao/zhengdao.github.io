@@ -482,7 +482,7 @@
 <blockquote>
 <p>GRUB_DEFAULT=“Advanced options for Ubuntu &gt; Ubuntu, with Linux 4.4.0-104-generic”</p>
 </blockquote>
-<h1 id="3-更新Grub"><a href="#3-更新Grub" class="headerlink" title="3.更新Grub"></a>3.更新Grub</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update grub</span><br></pre></td></tr></table></figure>
+<h1 id="3-更新Grub"><a href="#3-更新Grub" class="headerlink" title="3.更新Grub"></a>3.更新Grub</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
 <p>或使用更标准的做法：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo grub-mkconfig -o /boot/grub/grub.cfg</span><br></pre></td></tr></table></figure>
 <p>此时如果有错误，则检查 GRUB_DEFAULT 是否所选 Linux 内核版本不在次级选项中，若是则需要将前面部分”Advanced options for Ubuntu&gt;”去掉后重新执行。</p>
